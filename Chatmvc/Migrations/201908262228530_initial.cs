@@ -11,12 +11,11 @@ namespace Chatmvc.Migrations
                 "dbo.Messages",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
+                        Id = c.Long(nullable: false, identity: true),
                         IdUserSend = c.String(),
                         IdRoom = c.String(),
                         Date = c.DateTime(nullable: false),
-                        Text = c.String(),
-                        IdUserReceive = c.String(),
+                        Text = c.String()
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -24,7 +23,7 @@ namespace Chatmvc.Migrations
                 "dbo.Rooms",
                 c => new
                     {
-                        Id = c.String(nullable: false, maxLength: 128),
+                        Id = c.Long(nullable: false, identity: true),
                         Name = c.String(),
                         Enabled = c.Boolean(nullable: false),
                     })

@@ -15,13 +15,14 @@ namespace Chatmvc.Tests.Controllers
     public class HomeControllerTest
     {
         IUserRepository userRepository;
+        IMessageRepository messageRepository;
         IChatHub chatHub;
 
         [TestMethod]
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController(userRepository,chatHub);
+            HomeController controller = new HomeController(userRepository,chatHub,messageRepository);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;

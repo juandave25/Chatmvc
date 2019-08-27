@@ -12,14 +12,16 @@ namespace Chatmvc.Controllers
     public class HomeController : Controller
     {
         IUserRepository UserRepository;
+        IMessageRepository MessageRepository;
         IChatHub chatHub;
 
         public HomeController() { }
 
-        public HomeController(IUserRepository _UserRepository, IChatHub _chatHub)
+        public HomeController(IUserRepository _UserRepository, IChatHub _chatHub, IMessageRepository _MessageRepository)
         {
-            UserRepository = _UserRepository;
-            chatHub = _chatHub;
+            this.UserRepository = _UserRepository;
+            this.chatHub = _chatHub;
+            this.MessageRepository = _MessageRepository;
         }
 
 
@@ -28,19 +30,12 @@ namespace Chatmvc.Controllers
             return View();
         }
 
-        [HttpPost]
-        public ActionResult Insert(User user)
+        [HttpGet]
+        public ActionResult Get()
         {
-            if(UserRepository.getById(user.nickname).Count > 0) {
-                return Json("nickname already exist",JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                UserRepository.add(user);
-                Json("nickname already exist", JsonRequestBehavior.AllowGet);
-                chatHub.NotifyToAllClients();
-                return RedirectToAction("Index");
-            }
+            List<Message> messages = new List<Message>();
+            messages = MessageRepository.Get();
+            return Json(messages, JsonRequestBehavior.AllowGet);
             
         }
 

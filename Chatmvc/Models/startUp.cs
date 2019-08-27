@@ -15,7 +15,7 @@ namespace Chatmvc.Models
     {
         public void Configuration(IAppBuilder app)
         {
-            GlobalHost.DependencyResolver.Register(typeof(Hubs.chatHub),() => new Hubs.chatHub(new UserRepository(),new RoomRepository()));
+            GlobalHost.DependencyResolver.Register(typeof(Hubs.chatHub),() => new Hubs.chatHub(new UserRepository(),new RoomRepository(),new MessageRepository()));
             app.MapSignalR();
         }
 

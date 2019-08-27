@@ -20,7 +20,7 @@ namespace Chatmvc.Repository
             List<User> users = new List<User>();
             using (var context = new Context())
             {
-                users = context.User.ToList();
+                users = context.User.Where(c=>c.enabled == true).ToList();
             }
             return users;
         }
