@@ -1,6 +1,7 @@
 ﻿@{
     ViewBag.Title = "Chat Room";
 }
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="~/js/getMessages.js"></script>
 <div class="container">
     <div class="row">
@@ -51,7 +52,7 @@
         </div>
     </div>
     <!--room messages-->
-    <div class="row" style="visibility:hidden">
+    <div class="row">
         <div class="col-xs-12 col-md-12">
             <div class="panel panel-info">
                 <div class="panel-heading" id="RoomCount">Messages in Room</div>
@@ -60,7 +61,7 @@
                         <thead>
                             <tr>
                                 <th>Id</th>
-                                <th>NickName</th>
+                                <th>Session</th>
                                 <th>Room</th>
                                 <th>Date</th>
                                 <th>Message</th>

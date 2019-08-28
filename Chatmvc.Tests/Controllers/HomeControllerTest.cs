@@ -22,7 +22,7 @@ namespace Chatmvc.Tests.Controllers
         public void Index()
         {
             // Arrange
-            HomeController controller = new HomeController(userRepository,chatHub,messageRepository);
+            HomeController controller = new HomeController();
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
